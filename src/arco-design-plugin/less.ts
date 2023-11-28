@@ -62,8 +62,9 @@ export function modifyCssConfig(
                 // arco component style
                 const componentName = pathMatch(filename, componentLessMatchers);
                 if (componentName) {
-                  if (getThemeComponentList(theme).includes(componentName)) {
-                    src += `; @import '${theme}/components/${componentName}/index.less';`;
+                  const name=getThemeComponentList(theme).find(item=>item.toLowerCase() === componentName.toLowerCase())
+                  if (name) {
+                    src += `; @import '${theme}/components/${name}/index.less';`;
                   }
                 }
               }
